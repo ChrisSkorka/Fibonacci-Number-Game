@@ -1,6 +1,5 @@
 from game.interval import Interval
-from game.fibonacci import isFibonacci
-
+from game.fibonacci import Fibonacci
 
 class Game:
     """
@@ -27,6 +26,7 @@ class Game:
         self.output_frequency_callback = output_frequency_callback
         self.interval = Interval(delay, self.reportFrequencies)
         self.interval.start()
+        self.fibonacci = Fibonacci()
 
     def reportFrequencies(self):
         """
@@ -58,7 +58,7 @@ class Game:
 
         self.frequencies[number] = self.frequencies.get(number, 0) + 1
 
-        return number <= self.fibonacci_number_1000 and isFibonacci(number)
+        return number <= self.fibonacci_number_1000 and (number in self.fibonacci)
 
     def halt(self):
         """

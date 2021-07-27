@@ -1,5 +1,5 @@
 import unittest
-from game.fibonacci import isFibonacci
+from game.fibonacci import Fibonacci
 
 # 10 very big Fibonacci numbers big_fib_{i} where i is the index in the Fibonacci sequence
 # source https://fibonacci-calculator.netlify.app/
@@ -14,191 +14,203 @@ big_fib_30000 = 1904243567346243874850097684717575028944022916023335192733911840
 
 
 class FibonacciTestCase(unittest.TestCase):
-    """Test game.fibonacci.isFibonacci"""
+    """Test x in game.fibonacci.Fibonacci"""
     
     def test_first_1000_numbers(self):
-        """Tests that the isFibonacci() returns the correct values for number between 0 and 1000 (inclusive)"""
+        """Tests that (n in fibonacci) returns the correct values for number between 0 and 1000 (inclusive)"""
+
+        fibonacci = Fibonacci()
 
         # fibonacci numbers between 0 and 999 (inclusive)
         fib_numbers = set([0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987])
         expected_is_fibonacci = [n in fib_numbers for n in range(1000)]
-        actual_is_fibonacci = [isFibonacci(n) for n in range(1000)]
+        actual_is_fibonacci = [n in fibonacci for n in range(1000)]
         self.assertEqual(actual_is_fibonacci,expected_is_fibonacci)
 
     def test_first_100_fib_numbers(self):
         """Test that the first 100 numbers in the Fibonacci sequence are correctly identified"""
 
-        self.assertTrue(isFibonacci(0))
-        self.assertTrue(isFibonacci(1))
-        self.assertTrue(isFibonacci(1))
-        self.assertTrue(isFibonacci(2))
-        self.assertTrue(isFibonacci(3))
-        self.assertTrue(isFibonacci(5))
-        self.assertTrue(isFibonacci(8))
-        self.assertTrue(isFibonacci(13))
-        self.assertTrue(isFibonacci(21))
-        self.assertTrue(isFibonacci(34))
-        self.assertTrue(isFibonacci(55))
-        self.assertTrue(isFibonacci(89))
-        self.assertTrue(isFibonacci(144))
-        self.assertTrue(isFibonacci(233))
-        self.assertTrue(isFibonacci(377))
-        self.assertTrue(isFibonacci(610))
-        self.assertTrue(isFibonacci(987))
-        self.assertTrue(isFibonacci(1597))
-        self.assertTrue(isFibonacci(2584))
-        self.assertTrue(isFibonacci(4181))
-        self.assertTrue(isFibonacci(6765))
-        self.assertTrue(isFibonacci(10946))
-        self.assertTrue(isFibonacci(17711))
-        self.assertTrue(isFibonacci(28657))
-        self.assertTrue(isFibonacci(46368))
-        self.assertTrue(isFibonacci(75025))
-        self.assertTrue(isFibonacci(121393))
-        self.assertTrue(isFibonacci(196418))
-        self.assertTrue(isFibonacci(317811))
-        self.assertTrue(isFibonacci(514229))
-        self.assertTrue(isFibonacci(832040))
-        self.assertTrue(isFibonacci(1346269))
-        self.assertTrue(isFibonacci(2178309))
-        self.assertTrue(isFibonacci(3524578))
-        self.assertTrue(isFibonacci(5702887))
-        self.assertTrue(isFibonacci(9227465))
-        self.assertTrue(isFibonacci(14930352))
-        self.assertTrue(isFibonacci(24157817))
-        self.assertTrue(isFibonacci(39088169))
-        self.assertTrue(isFibonacci(63245986))
-        self.assertTrue(isFibonacci(102334155))
-        self.assertTrue(isFibonacci(165580141))
-        self.assertTrue(isFibonacci(267914296))
-        self.assertTrue(isFibonacci(433494437))
-        self.assertTrue(isFibonacci(701408733))
-        self.assertTrue(isFibonacci(1134903170))
-        self.assertTrue(isFibonacci(1836311903))
-        self.assertTrue(isFibonacci(2971215073))
-        self.assertTrue(isFibonacci(4807526976))
-        self.assertTrue(isFibonacci(7778742049))
-        self.assertTrue(isFibonacci(12586269025))
-        self.assertTrue(isFibonacci(20365011074))
-        self.assertTrue(isFibonacci(32951280099))
-        self.assertTrue(isFibonacci(53316291173))
-        self.assertTrue(isFibonacci(86267571272))
-        self.assertTrue(isFibonacci(139583862445))
-        self.assertTrue(isFibonacci(225851433717))
-        self.assertTrue(isFibonacci(365435296162))
-        self.assertTrue(isFibonacci(591286729879))
-        self.assertTrue(isFibonacci(956722026041))
-        self.assertTrue(isFibonacci(1548008755920))
-        self.assertTrue(isFibonacci(2504730781961))
-        self.assertTrue(isFibonacci(4052739537881))
-        self.assertTrue(isFibonacci(6557470319842))
-        self.assertTrue(isFibonacci(10610209857723))
-        self.assertTrue(isFibonacci(17167680177565))
-        self.assertTrue(isFibonacci(27777890035288))
-        self.assertTrue(isFibonacci(44945570212853))
-        self.assertTrue(isFibonacci(72723460248141))
-        self.assertTrue(isFibonacci(117669030460994))
-        self.assertTrue(isFibonacci(190392490709135))
-        self.assertTrue(isFibonacci(308061521170129))
-        self.assertTrue(isFibonacci(498454011879264))
-        self.assertTrue(isFibonacci(806515533049393))
-        self.assertTrue(isFibonacci(1304969544928657))
-        self.assertTrue(isFibonacci(2111485077978050))
-        self.assertTrue(isFibonacci(3416454622906707))
-        self.assertTrue(isFibonacci(5527939700884757))
-        self.assertTrue(isFibonacci(8944394323791464))
-        self.assertTrue(isFibonacci(14472334024676221))
-        self.assertTrue(isFibonacci(23416728348467685))
-        self.assertTrue(isFibonacci(37889062373143906))
-        self.assertTrue(isFibonacci(61305790721611591))
-        self.assertTrue(isFibonacci(99194853094755497))
-        self.assertTrue(isFibonacci(160500643816367088))
-        self.assertTrue(isFibonacci(259695496911122585))
-        self.assertTrue(isFibonacci(420196140727489673))
-        self.assertTrue(isFibonacci(679891637638612258))
-        self.assertTrue(isFibonacci(1100087778366101931))
-        self.assertTrue(isFibonacci(1779979416004714189))
-        self.assertTrue(isFibonacci(2880067194370816120))
-        self.assertTrue(isFibonacci(4660046610375530309))
-        self.assertTrue(isFibonacci(7540113804746346429))
-        self.assertTrue(isFibonacci(12200160415121876738))
-        self.assertTrue(isFibonacci(19740274219868223167))
-        self.assertTrue(isFibonacci(31940434634990099905))
-        self.assertTrue(isFibonacci(51680708854858323072))
-        self.assertTrue(isFibonacci(83621143489848422977))
-        self.assertTrue(isFibonacci(135301852344706746049))
-        self.assertTrue(isFibonacci(218922995834555169026))
+        fibonacci = Fibonacci()
+
+        self.assertTrue(0 in fibonacci)
+        self.assertTrue(1 in fibonacci)
+        self.assertTrue(1 in fibonacci)
+        self.assertTrue(2 in fibonacci)
+        self.assertTrue(3 in fibonacci)
+        self.assertTrue(5 in fibonacci)
+        self.assertTrue(8 in fibonacci)
+        self.assertTrue(13 in fibonacci)
+        self.assertTrue(21 in fibonacci)
+        self.assertTrue(34 in fibonacci)
+        self.assertTrue(55 in fibonacci)
+        self.assertTrue(89 in fibonacci)
+        self.assertTrue(144 in fibonacci)
+        self.assertTrue(233 in fibonacci)
+        self.assertTrue(377 in fibonacci)
+        self.assertTrue(610 in fibonacci)
+        self.assertTrue(987 in fibonacci)
+        self.assertTrue(1597 in fibonacci)
+        self.assertTrue(2584 in fibonacci)
+        self.assertTrue(4181 in fibonacci)
+        self.assertTrue(6765 in fibonacci)
+        self.assertTrue(10946 in fibonacci)
+        self.assertTrue(17711 in fibonacci)
+        self.assertTrue(28657 in fibonacci)
+        self.assertTrue(46368 in fibonacci)
+        self.assertTrue(75025 in fibonacci)
+        self.assertTrue(121393 in fibonacci)
+        self.assertTrue(196418 in fibonacci)
+        self.assertTrue(317811 in fibonacci)
+        self.assertTrue(514229 in fibonacci)
+        self.assertTrue(832040 in fibonacci)
+        self.assertTrue(1346269 in fibonacci)
+        self.assertTrue(2178309 in fibonacci)
+        self.assertTrue(3524578 in fibonacci)
+        self.assertTrue(5702887 in fibonacci)
+        self.assertTrue(9227465 in fibonacci)
+        self.assertTrue(14930352 in fibonacci)
+        self.assertTrue(24157817 in fibonacci)
+        self.assertTrue(39088169 in fibonacci)
+        self.assertTrue(63245986 in fibonacci)
+        self.assertTrue(102334155 in fibonacci)
+        self.assertTrue(165580141 in fibonacci)
+        self.assertTrue(267914296 in fibonacci)
+        self.assertTrue(433494437 in fibonacci)
+        self.assertTrue(701408733 in fibonacci)
+        self.assertTrue(1134903170 in fibonacci)
+        self.assertTrue(1836311903 in fibonacci)
+        self.assertTrue(2971215073 in fibonacci)
+        self.assertTrue(4807526976 in fibonacci)
+        self.assertTrue(7778742049 in fibonacci)
+        self.assertTrue(12586269025 in fibonacci)
+        self.assertTrue(20365011074 in fibonacci)
+        self.assertTrue(32951280099 in fibonacci)
+        self.assertTrue(53316291173 in fibonacci)
+        self.assertTrue(86267571272 in fibonacci)
+        self.assertTrue(139583862445 in fibonacci)
+        self.assertTrue(225851433717 in fibonacci)
+        self.assertTrue(365435296162 in fibonacci)
+        self.assertTrue(591286729879 in fibonacci)
+        self.assertTrue(956722026041 in fibonacci)
+        self.assertTrue(1548008755920 in fibonacci)
+        self.assertTrue(2504730781961 in fibonacci)
+        self.assertTrue(4052739537881 in fibonacci)
+        self.assertTrue(6557470319842 in fibonacci)
+        self.assertTrue(10610209857723 in fibonacci)
+        self.assertTrue(17167680177565 in fibonacci)
+        self.assertTrue(27777890035288 in fibonacci)
+        self.assertTrue(44945570212853 in fibonacci)
+        self.assertTrue(72723460248141 in fibonacci)
+        self.assertTrue(117669030460994 in fibonacci)
+        self.assertTrue(190392490709135 in fibonacci)
+        self.assertTrue(308061521170129 in fibonacci)
+        self.assertTrue(498454011879264 in fibonacci)
+        self.assertTrue(806515533049393 in fibonacci)
+        self.assertTrue(1304969544928657 in fibonacci)
+        self.assertTrue(2111485077978050 in fibonacci)
+        self.assertTrue(3416454622906707 in fibonacci)
+        self.assertTrue(5527939700884757 in fibonacci)
+        self.assertTrue(8944394323791464 in fibonacci)
+        self.assertTrue(14472334024676221 in fibonacci)
+        self.assertTrue(23416728348467685 in fibonacci)
+        self.assertTrue(37889062373143906 in fibonacci)
+        self.assertTrue(61305790721611591 in fibonacci)
+        self.assertTrue(99194853094755497 in fibonacci)
+        self.assertTrue(160500643816367088 in fibonacci)
+        self.assertTrue(259695496911122585 in fibonacci)
+        self.assertTrue(420196140727489673 in fibonacci)
+        self.assertTrue(679891637638612258 in fibonacci)
+        self.assertTrue(1100087778366101931 in fibonacci)
+        self.assertTrue(1779979416004714189 in fibonacci)
+        self.assertTrue(2880067194370816120 in fibonacci)
+        self.assertTrue(4660046610375530309 in fibonacci)
+        self.assertTrue(7540113804746346429 in fibonacci)
+        self.assertTrue(12200160415121876738 in fibonacci)
+        self.assertTrue(19740274219868223167 in fibonacci)
+        self.assertTrue(31940434634990099905 in fibonacci)
+        self.assertTrue(51680708854858323072 in fibonacci)
+        self.assertTrue(83621143489848422977 in fibonacci)
+        self.assertTrue(135301852344706746049 in fibonacci)
+        self.assertTrue(218922995834555169026 in fibonacci)
 
     def test_big_fib_numbers(self):
         """Test some very large Fibonacci numbers"""
+
+        fibonacci = Fibonacci()
         
-        self.assertTrue(isFibonacci(big_fib_1000))
-        self.assertTrue(isFibonacci(big_fib_2000))
-        self.assertTrue(isFibonacci(big_fib_5000))
-        self.assertTrue(isFibonacci(big_fib_10000))
-        self.assertTrue(isFibonacci(big_fib_12345))
-        self.assertTrue(isFibonacci(big_fib_29999))
-        self.assertTrue(isFibonacci(big_fib_30000))
+        self.assertTrue(big_fib_1000 in fibonacci)
+        self.assertTrue(big_fib_2000 in fibonacci)
+        self.assertTrue(big_fib_5000 in fibonacci)
+        self.assertTrue(big_fib_10000 in fibonacci)
+        self.assertTrue(big_fib_12345 in fibonacci)
+        self.assertTrue(big_fib_29999 in fibonacci)
+        self.assertTrue(big_fib_30000 in fibonacci)
     
     def test_big_non_fib_numbers(self):
         """Test some very large non-Fibonacci numbers"""
 
-        self.assertFalse(isFibonacci(big_fib_1000-1))
-        self.assertFalse(isFibonacci(big_fib_1000+1))
-        self.assertFalse(isFibonacci(big_fib_2000-1))
-        self.assertFalse(isFibonacci(big_fib_2000+1))
-        self.assertFalse(isFibonacci(big_fib_5000-1))
-        self.assertFalse(isFibonacci(big_fib_5000+1))
-        self.assertFalse(isFibonacci(big_fib_10000-1))
-        self.assertFalse(isFibonacci(big_fib_10000+1))
-        self.assertFalse(isFibonacci(big_fib_12345-1))
-        self.assertFalse(isFibonacci(big_fib_12345+1))
-        self.assertFalse(isFibonacci(big_fib_29999-1))
-        self.assertFalse(isFibonacci(big_fib_29999+1))
-        self.assertFalse(isFibonacci(big_fib_30000-1))
-        self.assertFalse(isFibonacci(big_fib_30000+1))
+        fibonacci = Fibonacci()
+
+        self.assertFalse(big_fib_1000-1 in fibonacci)
+        self.assertFalse(big_fib_1000+1 in fibonacci)
+        self.assertFalse(big_fib_2000-1 in fibonacci)
+        self.assertFalse(big_fib_2000+1 in fibonacci)
+        self.assertFalse(big_fib_5000-1 in fibonacci)
+        self.assertFalse(big_fib_5000+1 in fibonacci)
+        self.assertFalse(big_fib_10000-1 in fibonacci)
+        self.assertFalse(big_fib_10000+1 in fibonacci)
+        self.assertFalse(big_fib_12345-1 in fibonacci)
+        self.assertFalse(big_fib_12345+1 in fibonacci)
+        self.assertFalse(big_fib_29999-1 in fibonacci)
+        self.assertFalse(big_fib_29999+1 in fibonacci)
+        self.assertFalse(big_fib_30000-1 in fibonacci)
+        self.assertFalse(big_fib_30000+1 in fibonacci)
 
     def test_unexpected_values(self):
         """Test some unexpected values"""
+
+        fibonacci = Fibonacci()
         
         with self.assertRaises(TypeError):
-            isFibonacci(None)
+            None in fibonacci
         
         with self.assertRaises(TypeError):
-            isFibonacci('1')
+            '1' in fibonacci
         
         with self.assertRaises(TypeError):
-            isFibonacci('A')
+            'A' in fibonacci
         
         with self.assertRaises(TypeError):
-            isFibonacci([])
+            [] in fibonacci
         
         with self.assertRaises(TypeError):
-            isFibonacci(())
+            () in fibonacci
         
         with self.assertRaises(TypeError):
-            isFibonacci({})
+            {} in fibonacci
         
         with self.assertRaises(TypeError):
-            isFibonacci(0.0)
+            0.0 in fibonacci
         
         with self.assertRaises(TypeError):
-            isFibonacci(0.5)
+            0.5 in fibonacci
         
         with self.assertRaises(TypeError):
-            isFibonacci(-1.5)
+            -1.5 in fibonacci
     
     def test_negative_numbers(self):
         """Test negative values"""
 
-        with self.assertRaises(ValueError):
-            isFibonacci(-1)
+        fibonacci = Fibonacci()
 
         with self.assertRaises(ValueError):
-            isFibonacci(-10)
+            -1 in fibonacci
 
         with self.assertRaises(ValueError):
-            isFibonacci(-10000)
+            -10 in fibonacci
+
+        with self.assertRaises(ValueError):
+            -10000 in fibonacci
 
 
 
